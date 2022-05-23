@@ -1,0 +1,36 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+
+{% load static %}
+
+<div class="row my-2">
+    <div class="col">
+        <img src="{% static 'portfolio/photo_2018-06-07_20-43-11.jpg' %}" class="img-fluid">
+    </div>
+    <div class="col-7">
+        <h3 class="font-weight-bold">Sergei Razinkov is beginner developer and ex-shipbuilder. Lives in Saint-Petersburg</h3>
+    </div>
+</div>
+
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+
+{% for project in projects %}
+ <div class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}"><img src="{{ project.image.url }}" class="img-fluid mb-2"></a>
+    {%  else %}
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+       {% endif %}
+    <h2>{{ project.title }}</h2>
+<p>{{ project.description }}</p>
+
+ </div>
+{% endfor %}
+</div>
+{% endblock %}
+

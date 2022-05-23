@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+
+<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
+
+
+<h3 class="text-center mb-5">Now there is {{ projects.count }} blog{{ projects.count|pluralize }}</h3>
+
+
+{%  for project in projects %}
+    <div class="row justify-content-center my-3">
+        <div class="col-md-10">
+            <h2>{{ project.title }}</h2>
+            <h5>{{ project.date|date:'M d Y'|upper }}</h5>
+            <a href="{% url 'blog:detail' project.id %}" class="text-reset"><p>{{ project.text|safe|truncatechars:100 }}</p></a>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
